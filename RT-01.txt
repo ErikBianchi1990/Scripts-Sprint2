@@ -1,13 +1,7 @@
 enable
 configure terminal
 hostname RT-01
-banner motd " SOMENTE PESSOAS AUTORIZADAS"
-enable secret SenhadaEnable
-service password-encryption
-enable
-configure terminal
-hostname RT-01
-banner motd " SOMENTE PESSOAS AUTORIZADAS"
+banner motd "APENAS PARA GRUPO TARGARYEN"
 enable secret SenhadaEnable
 service password-encryption
 ip domain-name PeachDaisy.Local
@@ -21,65 +15,75 @@ login block-for 180 attempts 3 within 60
 security passwords min-length 8
 line console 0
 password SenhadaConsole
-login
+login local
 exit
 line vty 0 15
 transport input ssh
 login local
-exec-timeout 10
+exec-timeout 9
 exit
 interface gigabitEthernet 0/0
-
 no shutdown
 exit
 interface gigabitEthernet 0/0.10
 encapsulation dot1Q 10
 ip address 172.16.18.1 255.255.255.128
 description REDE de RH
+ip helper-address 172.16.20.37 
 exit
 interface gigabitEthernet 0/0.20
 encapsulation dot1Q 20
 ip address 172.16.20.1 255.255.255.224
 description REDE de QUALIDADE
+ip helper-address 172.16.20.37 
 exit
 interface gigabitEthernet 0/0.30
 encapsulation dot1Q 30
 ip address 172.16.19.193 255.255.255.192
 description REDE de RECEPCAO
+ip helper-address 172.16.20.37 
 exit
 interface gigabitEthernet 0/0.40
 encapsulation dot1Q 40
 ip address 172.16.8.1 255.255.248.0
 description REDE de CONSULTORES
+ip helper-address 172.16.20.37 
 exit
 interface gigabitEthernet 0/0.50
 encapsulation dot1Q 50
 ip address 172.16.16.1 255.255.254.0
 description REDE de ANALISTAS
+ip helper-address 172.16.20.37 
 exit
 interface gigabitEthernet 0/0.60
 encapsulation dot1Q 60
 ip address 172.16.19.129 255.255.255.192
 description REDE de TI
+ip helper-address 172.16.20.37 
 exit
 interface gigabitEthernet 0/0.70
 encapsulation dot1Q 70
 ip address 172.16.18.129 255.255.255.128
 description REDE de ADMINISTRACAO
+ip helper-address 172.16.20.37 
 exit
 interface gigabitEthernet 0/0.80
 encapsulation dot1Q 80
 ip address 172.16.0.1 255.255.248.0
 description REDE de VOZ
+ip helper-address 172.16.20.37 
 exit
 interface gigabitEthernet 0/0.90
 encapsulation dot1Q 90
 ip address 172.16.19.1 255.255.255.128
 description REDE de FINANCAS
+ip helper-address 172.16.20.37 
 exit
-interface gigabiEthernet 0/0.99
+interface gigabiEthernet 0/0.100
+encapsulation dot1Q 100
 ip address 172.16.20.33 255.255.255.240
 description REDE de EQUIPAMENTOS
+ip helper-address 172.16.20.37 
 exit
 do wr
 
