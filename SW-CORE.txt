@@ -21,8 +21,8 @@ login local
 exec-timeout 9
 exit 
 ip default-gateway 172.16.20.33
-SW-01(config)#ip ftp username ErikBianchi
-SW-01(config)#ip ftp password erikftp
+ip ftp username ErikBianchi
+ip ftp password erikftp
 vlan 10
 name RH
 exit
