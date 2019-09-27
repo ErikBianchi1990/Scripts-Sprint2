@@ -22,6 +22,8 @@ transport input ssh
 login local
 exec-timeout 9
 exit
+ip ftp username ErikBianchi
+ip ftp password erikftp
 interface gigabitEthernet 0/0
 no shutdown
 exit
